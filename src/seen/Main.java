@@ -9,12 +9,12 @@ import java.util.LinkedHashSet;
 
 class Main {    
     
-    private static			Properties	config;
-    private static final	String		CONFIG_FILE = "config.properties"; 
+    private static          Properties    config;
+    private static final    String        CONFIG_FILE = "config.properties"; 
     
     
     static {
-    	
+        
           config = new Properties();
           
           try ( var inputStream = Main.class.getResourceAsStream(CONFIG_FILE) ) {
@@ -33,7 +33,7 @@ class Main {
     
     
     public static void main(String args[]) {        
-    	
+        
         if( isValidArgs(args) ) {
             System.out.println("Starting the compilation process");
         }
@@ -44,7 +44,7 @@ class Main {
 
     
     public static boolean isValidArgs(String[] args) {
-    	
+        
         // remove duplicates
         var argsSet = new LinkedHashSet<String>( Arrays.asList( args ) );
 
@@ -59,11 +59,11 @@ class Main {
                                 System.exit(0);                            
 
             case "-h"     :     System.out.println( "-v\t\tprint compiler version\n"    +
-                                                "-h\t\tprint this help message\n"     );
-                            	System.exit(0);                                    
+                                                    "-h\t\tprint this help message\n"   );
+                                System.exit(0);                                    
                             
             default        :    System.out.println( "unrecognized compiler option :  " + arg );
-                          		valid = false;
+                                valid = false;
             }
             
             
