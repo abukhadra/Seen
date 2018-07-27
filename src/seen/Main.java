@@ -1,34 +1,36 @@
 package seen;
 
 
-import java.util.Properties;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.LinkedHashSet;
+import            java.io.IOException;
+import            java.util.Properties;
+import            java.util.Arrays;
+import            java.util.LinkedHashSet;
+
+import static     seen.Error.readFileError;;
 
 
-class Main {    
+public class Main {    
     
     private static          Properties    config;
     private static final    String        CONFIG_FILE = "config.properties"; 
     
     
 //==============================================================================================
-//                                       static init
+//                                         static init
 //==============================================================================================    
+
+// load the config file
     static {
         
           config = new Properties();
           
-          try ( var inputStream = Main.class.getResourceAsStream(CONFIG_FILE) ) {
+          try ( var inputStream = Main.class.getResourceAsStream( CONFIG_FILE ) ) {
               
               config.load( inputStream );
               
-          } catch( IOException e ) {
-              
-              System.out.println("could not read the config.properties file!");
-              e.printStackTrace();
-              System.exit(0);
+          } catch( IOException e ) {                  
+              readFileError( CONFIG_FILE , e );
+              System.exit( 0 );
               
           }
           
@@ -36,13 +38,13 @@ class Main {
     
 
 //==============================================================================================
-//                                       main()
+//                                         main()
 //==============================================================================================
     
-    public static void main(String args[]) {        
+    public static void main( String args[] ) {        
         
-        if( isValidArgs(args) ) {
-            System.out.println("Starting the compilation process");
+        if( handleArguments( args ) ) {            
+            seen.test.compiler.Test1.run();            
         }
         
     }
@@ -51,10 +53,10 @@ class Main {
 
     
 //==============================================================================================
-//                                       isValidArgs()
+//                                         handleArguments()
 //==============================================================================================
     
-    public static boolean isValidArgs(String[] args) {
+    public static boolean handleArguments( String[] args ) {
         
         // remove duplicates
         var argsSet = new LinkedHashSet<String>( Arrays.asList( args ) );
@@ -64,9 +66,10 @@ class Main {
         
         for( var arg : argsSet ) {
             
-            switch(arg) {
+            switch( arg ) {
             
-            case "-v"     :     System.out.println( "Seen Bootstrapping Compiler version :  " + config.getProperty("compiler.version") );
+            case "-v"     :     System.out.println( "Seen Bootstrapping Compiler version :  "     +
+                                                    config.getProperty("compiler.version")         );
                                 System.exit(0);                            
 
             case "-h"     :     System.out.println( "-v\t\tprint compiler version\n"    +
