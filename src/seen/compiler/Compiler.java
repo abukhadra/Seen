@@ -3,6 +3,7 @@ package seen.compiler;
 import             java.io.IOException;
 import             java.io.InputStream;
 import             java.util.Map;
+import java.util.ArrayList;
 import             java.util.HashMap;
 import            java.util.Scanner;
 import static    seen.Error.readFileError;      
@@ -63,7 +64,10 @@ public class Compiler {
 //==============================================================================================    
     public    void run( String source ) {
     	
-        Lexer.run( source );       
+        ArrayList< Token >  tokens      = Lexer.run( source );       
+        SyntaxTree          syntaxTree  = Parser.run( tokens );
+        
+        
 
     }
     

@@ -13,13 +13,16 @@ public class Lexer {
     
     public static    ArrayList< Token >    run( String sourceFile ) {
         
-        var tokens = new ArrayList< Token >();
-        
-        try{
-           
-            var path     = Paths.get( sourceFile ).toAbsolutePath();            
-            var scanner  = new Scanner( path );            
-                        
+        var tokens  = new ArrayList< Token >();        
+        var path    = Paths.get( sourceFile ).toAbsolutePath();
+                
+        try( var scanner  = new Scanner( path ) ) {          
+
+            
+            while( scanner.hasNext() ) {
+                
+            }
+            
         } catch( IOException e ) {    readFileError( sourceFile , e );     }
         
         return tokens;
