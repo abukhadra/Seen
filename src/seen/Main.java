@@ -3,6 +3,7 @@ package seen;
 
 import            java.io.IOException;
 import            java.util.Properties;
+
 import            java.util.Arrays;
 import            java.util.LinkedHashSet;
 
@@ -44,7 +45,9 @@ public class Main {
     public static void main( String args[] ) {        
         
         if( handleArguments( args ) ) {            
+            
             seen.test.compiler.Test1.run();            
+            
         }
         
     }
