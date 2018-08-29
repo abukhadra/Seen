@@ -1,9 +1,11 @@
-package seen.compiler;
+package         seen.compiler;
 
 import static   seen.compiler.Category.OPERATOR;
 import static   seen.compiler.Category.SEPARATOR;
 
+import java.io.File;
 import          java.io.IOException;
+import java.nio.file.Files;
 import          java.nio.file.Paths;
 import          java.util.ArrayList;
 import          java.util.HashMap;
@@ -15,7 +17,7 @@ import          java.util.Scanner;
 public class    LexicalData {
     
     public static final    String                   BOM                 = "\uFEFF";
-    public static final    String                   LETTERS_FILE        = "./src/seen/letters.csv";
+    public static final    String                   LETTERS_FILE        = "letters.csv";
     public static final    List< String >           singleQuotes;
     public static final    List< String >           doubleQuotes;
     public static final    List< String >           dots;
@@ -62,18 +64,17 @@ public class    LexicalData {
         for( var x : maghrebDigits ) { digits.add( x ); }
         
         letters                 = new ArrayList<String>();          
-        try (var scanner        = new Scanner( Paths.get( LETTERS_FILE ).toAbsolutePath()) ) {            
+        try ( var scanner        = new Scanner( seen.Main.class.getResourceAsStream( LETTERS_FILE ) ) ) {
             
             scanner.useDelimiter(",");            
             
             while( scanner.hasNext() ) { 
-                
-                var value       = Integer.parseInt( scanner.next() );
-                var c           = Character.toChars( value );                  
+                var decimal     = Integer.parseInt( scanner.next() );
+                var c           = Character.toChars( decimal );                  
                 letters.add( new String( c ) );
             }
             
-        } catch( IOException e ) { e.printStackTrace(); System.exit( 0 ); }
+        }//  catch( IOException e ) { e.printStackTrace(); System.exit( 0 ); }
          
         
         lettersOrDigits         = new ArrayList<>( letters );

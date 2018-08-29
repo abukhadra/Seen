@@ -1,10 +1,20 @@
-package seen.compiler;
+package         seen.compiler;
 
-import java.util.ArrayList;
+import          java.util.ArrayList;
 
-public class Parser {
+public class    Parser {
 
-    public static    SyntaxTree    run( ArrayList< Token>   tokens ) {
+
+//==============================================================================================
+//  constructor
+//==============================================================================================    
+    private                                     Parser() {}
+
+    
+//==============================================================================================
+//  exec
+//==============================================================================================     
+    public static           SyntaxTree          exec( ArrayList< Token>   tokens ) {
         
         seen.Error.notImplementedError( "Parser" );
         

@@ -1,26 +1,24 @@
-package seen.compiler;
+package         seen.compiler;
 
-
-import              java.util.ArrayList;
-import             java.util.HashMap;
+import          java.util.List;
       
 
 
-public class Compiler {
-        
-    
+public class    Compiler {
+
 //==============================================================================================
-//                                     run()
+//  constructor
 //==============================================================================================    
-    public    void run( String source ) {
+    private                                 Compiler() {}
+
+      
+//==============================================================================================
+// exec()
+//==============================================================================================    
+    public static           void           exec( List< String > source ) {
     	
-        ArrayList< Token >  tokens      = Lexer.run( source ); 
-        
-        tokens.forEach( t -> System.out.println( t ) );
-        
-        SyntaxTree  syntaxTree          = Parser.run( tokens );
-        
-        
+        var tokens          = Lexer.exec( source ); 
+        var syntaxTree      = Parser.exec( tokens );
 
     }
     

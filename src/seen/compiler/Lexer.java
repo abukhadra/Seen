@@ -1,4 +1,4 @@
-package seen.compiler;
+package         seen.compiler;
 
 import          java.io.IOException;
 
@@ -29,7 +29,7 @@ public class    Lexer {
 //==============================================================================================
 //  constructor
 //==============================================================================================    
-    private     Lexer() {}
+    private                         Lexer() {}
 
       
 //==============================================================================================
@@ -448,7 +448,7 @@ public class    Lexer {
                 
         switch( buffer ) {
         
-        case    "صواب"  :
+        case    "صح"  :
         case    "خطأ"   :   booleanLiteral();   break;
         case    "خالي"   :   nullLiteral();      break;
         default        :   
@@ -471,78 +471,82 @@ public class    Lexer {
     
      
 //==============================================================================================
-//  run()
+//  exec()
 //==============================================================================================            
-    public static    ArrayList< Token >    run( String sourceFile ) {
+    public static    ArrayList< Token >    exec( List< String > source ) {
 
-        var path                = Paths.get( sourceFile ).toAbsolutePath();
+        for( var filename : source ) {
+
+            var path                = Paths.get( filename ).toAbsolutePath();
             
-            tokens              = new ArrayList<Token>();            
-            buffer              = "";
-            lookaheadValue      = "";
-            startLocation       = new Location( 1 , 0 );
-            endLocation         = new Location( 1 , 0 );
-            errorTable          = new ArrayList< String >();
-            
-        try {  
-            
-                scanner         = new Scanner( path , "UTF-8"  );
-                scanner.useLocale( new Locale( "ar" , "AR" ) );
-                scanner.useDelimiter("");
-               
-                ignoreBOM();
+            tokens                  = new ArrayList<Token>();            
+            buffer                  = "";
+            lookaheadValue          = "";
+            startLocation           = new Location( 1 , 0 );
+            endLocation             = new Location( 1 , 0 );
+            errorTable              = new ArrayList< String >();
                 
-                while( ! isEndOfFile() ) {                
-
-                    String c        = next();
+            try {  
+                
+                    scanner         = new Scanner( path , "UTF-8"  );
+                    scanner.useLocale( new Locale( "ar" , "AR" ) );
+                    scanner.useDelimiter("");
+                   
+                    ignoreBOM();
                     
-                    setTokenLocation();
-
-                    switch( c ) {
-                    
-                    case    "#"     :   inLineComment();        break;
-                    case    "{"     :
+                    while( ! isEndOfFile() ) {                
+    
+                        String c        = next();
                         
-                        switch( lookahead() ) {
+                        setTokenLocation();
+    
+                        switch( c ) {
                         
-                        
-                        case    "#" :   blockComment();         break;
-                        default     :   separatorOrOperator();  break;
-                        
+                        case    "#"     :   inLineComment();        break;
+                        case    "{"     :
+                            
+                            switch( lookahead() ) {
+                            
+                            
+                            case    "#" :   blockComment();         break;
+                            default     :   separatorOrOperator();  break;
+                            
+                            }
+                            
+                            break;
+                                                    
+                        case    "."     :
+                            
+                                if( isFloatingPoint( ) )                {   floatingPointLiteral( getDigitType( lookahead() ) );    }
+                                else                                    {   separatorOrOperator();                                  }   
+                            
+                            break;
+    
+                            
+                            
+                        default         :
+                                    if( isDigit( c ) )                  {   decimalOrfloatingPointLiteral( getDigitType( c ) );     }               
+                            else    if( singleQuotes.contains( c ) )    {   characterLiteral();                                     }
+                            else    if( doubleQuotes.contains( c ) )    {   stringLiteral();                                        }
+                            else    if( c.equals( "«" )  )              {   stringLiteralArabicQuotation();                         }             
+                            else    if( isLineTerminator( c) )          {   lineTerminator();                                       }
+                            else    if( whitespaceChars.contains( c ) ) {   whitespace();                                           }
+                            else    if( letters.contains( c ) )         {   javaLetterOrDigit();                                    }
+                            else    if( isSeparatorOrOperator( c ) )    {   separatorOrOperator();                                  }
+                            else    error( "invalid character!" + c );
+                            }
+    
+    
                         }
-                        
-                        break;
-                                                
-                    case    "."     :
-                        
-                            if( isFloatingPoint( ) )                {   floatingPointLiteral( getDigitType( lookahead() ) );    }
-                            else                                    {   separatorOrOperator();                                  }   
-                        
-                        break;
-
-                        
-                        
-                    default         :
-                                if( isDigit( c ) )   {   decimalOrfloatingPointLiteral( getDigitType( c ) );                    }               
-                        else    if( singleQuotes.contains( c ) )    {   characterLiteral();                                     }
-                        else    if( doubleQuotes.contains( c ) )    {   stringLiteral();                                        }
-                        else    if( c.equals( "«" )  )              {   stringLiteralArabicQuotation();                         }             
-                        else    if( isLineTerminator( c) )          {   lineTerminator();                                       }
-                        else    if( whitespaceChars.contains( c ) ) {   whitespace();                                           }
-                        else    if( letters.contains( c ) )         {   javaLetterOrDigit();                                    }
-                        else    if( isSeparatorOrOperator( c ) )    {   separatorOrOperator();                                  }
-                        else    error( "invalid character!" + c );
-                        }
-
-
-                    }
-
-            
-        }   catch( IOException e )  {    readFileError( sourceFile , e );       }
-            finally                 {    scanner.close();                       }
+    
+                
+            }   catch( IOException e )  {    readFileError( filename , e );       }
+                finally                 {    scanner.close();                     }
         
         
         if( ! errorTable.isEmpty() ) {      errorTable.forEach( e -> System.out.println( e ) );     }
+        
+        }
         
         return tokens;
         

@@ -1,12 +1,12 @@
-package seen;
+package         seen;
 
-public class Error {
+public class    Error {
     
 
 //==============================================================================================
 //                                        notImplementedError()
 //==============================================================================================    
-    public static void notImplementedError( String name ) {
+    public static           void            notImplementedError( String name ) {
     
         System.out.println( name + " : not implemented!!!" );
 
@@ -17,7 +17,7 @@ public class Error {
 //==============================================================================================
 //                                         readFileError()
 //==============================================================================================    
-    public static void readFileError( String file , Exception e ) {
+    public static           void            readFileError( String file , Exception e ) {
         
         System.out.println("could not read file :  " + file );
         e.printStackTrace();

@@ -1,5 +1,5 @@
-package seen.compiler;
+package         seen.compiler;
 
-public class SyntaxTree {
+public class    SyntaxTree {
 
 }

@@ -1,25 +1,29 @@
-package seen.compiler;
+package         seen.compiler;
 
-import seen.compiler.Category;
-import seen.compiler.Location;
+import          seen.compiler.Category;
+import          seen.compiler.Location;
 
-public class Token {
+public class    Token {
     
-    private     Location     location;
-    private     Category     category;
-    private     String       value;
+    private                 Location        location;
+    private                 Category        category;
+    private                 String          value;
+    
+    
     
 
 //==============================================================================================
 //  constructor
 //==============================================================================================          
-    public      Token(  Location    location    ,
-                        Category    category    , 
-                        String      value       ) {
+    public                          Token(  Location    location    ,
+                                            Category    category    , 
+                                            String      value       ) {
         
             this.location   = location;
             this.category   = category;
             this.value      = value;
+            
+            
         
     }
     
@@ -27,14 +31,21 @@ public class Token {
 //==============================================================================================
 //  getters 
 //==============================================================================================          
-    public Location     getLocation()   {     return this.location;     }
-    public Category     getCategory()   {     return this.category;     }
-    public String       getValue()      {     return this.value;        }   
+    public          Location        getLocation()   {     return this.location;     }
+    public          Category        getCategory()   {     return this.category;     }
+    public          String          getValue()      {     return this.value;        }
+    
+       
     
     
 //==============================================================================================
 //  toString()
 //==============================================================================================
-    public  String  toString()  {   return  this.location + " , " + this.category + " , " + this.value ;   }    
+    public          String          toString()  {   
+        
+        return this.location + "\t" + this.category + "\t" + this.value;
+   
+        
+    }    
     
 }

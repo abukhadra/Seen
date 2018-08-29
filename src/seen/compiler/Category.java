@@ -1,21 +1,34 @@
-package seen.compiler;
+package         seen.compiler;
 
-enum    Category {
+public enum     Category {
     
-    LINE_TERMINATOR ,
-    WHITESPACE      ,
-    KEYWORD         ,
-    IDENTIFIER      ,
-    MASHREQ_INTEGER ,
-    MAGHREB_INTEGER ,
-    MASHREQ_FLOAT   ,
-    MAGHREB_FLOAT   ,
-    BOOLEAN         ,
-    CHARACTER       ,   
-    STRING          ,
-    NULL            ,
-    SEPARATOR       ,
-    OPERATOR        ,
-    ERROR                                 
+    LINE_TERMINATOR     ( "فاصل_أسطر" )               ,
+    WHITESPACE          ( "مسافة_بيضاء" )               ,    
+    KEYWORD             ( "كلمة_أساسبة" )               ,
+    IDENTIFIER          ( "معرّف" )                 ,
+    MASHREQ_INTEGER     ( "عدد_صحيح_مشرقي" )            ,
+    MAGHREB_INTEGER     ( "عدد_صحيح_مغربي" )            ,
+    MASHREQ_FLOAT       ( "عدد_فاصل_عائم _مشرقي" )          ,
+    MAGHREB_FLOAT       ( "عدد_فاصل_عائم_مغربي" )          ,
+    BOOLEAN             ( "بوليانِيّ" )                 ,
+    CHARACTER           ( "محرف" )                 ,   
+    STRING              ( "سلسلة" )                 ,
+    NULL                ( "خالي" )                  ,
+    SEPARATOR           ( "فاصل" )                 ,
+    OPERATOR            ( "مؤثر" )                  ,
+    ERROR               ( "خطأ" )                  ;          
+    
+    private final       String      arabic;
+    
+//==============================================================================================
+//  constructor()
+//==============================================================================================        
+    private                             Category( String arabic ) {     this.arabic = arabic;   }    
+    
+    
+//==============================================================================================
+//  override toString()
+//==============================================================================================    
+    @Override public        String      toString() {       return this.arabic;     }    
     
 }
