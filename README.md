@@ -1,6 +1,6 @@
 # Seen   س 
 
-#An Arabic based programming language ( لغة برمجة عربية  )                              
+# An Arabic based programming language ( لغة برمجة عربية  )                              
  
 
 ## Status
