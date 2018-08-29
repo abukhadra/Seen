@@ -48,7 +48,11 @@ public class    Lexer {
 //==============================================================================================
 //  isLineTerminator()
 //==============================================================================================
-    private static     boolean      isLineTerminator( String x ) {      return  lineTerminators.contains( x );      }
+    private static     boolean      isLineTerminator( String x ) {      
+        
+        return  lineTerminators.contains( x );      
+        
+    }
     
 //==============================================================================================
 //  setTokenLocation()
@@ -127,7 +131,9 @@ public class    Lexer {
 //==============================================================================================
 //  ignoreBOM()
 //==============================================================================================        
-    private static      void        ignoreBOM() {  while( scanner.hasNext( BOM ) ) {    scanner.next();    }
+    private static      void        ignoreBOM() {  
+        
+        while( scanner.hasNext( BOM ) ) {    scanner.next();    }
         
     }    
     

@@ -3,10 +3,6 @@ package         seen.compiler;
 import static   seen.compiler.Category.OPERATOR;
 import static   seen.compiler.Category.SEPARATOR;
 
-import java.io.File;
-import          java.io.IOException;
-import java.nio.file.Files;
-import          java.nio.file.Paths;
 import          java.util.ArrayList;
 import          java.util.HashMap;
 import          java.util.List;
@@ -94,7 +90,7 @@ public class    LexicalData {
         operators               = List.of(  "="     , ">"   , "<"   , "!"   , "~"   , "؟"   , ":"   , "->"  , "=="  ,  
                                             ">="    , "<="  , "!="  , "&&"  , "||"  , "++"  , "--"  , "+"   , "-"   ,  
                                             "*"     , "\\"  , "&"   , "|"   , "^"   , "%"   , "+="  , "-="  , "*="  , 
-                                            "\\="   , "؟"   ,  "_"  , "->"  , ":="                                              );
+                                            "\\="   , "؟"   ,  "_"  , "->"  , ":="                                  );
         
         separatorsOrOperators   = new HashMap< String , Category >();
         for( var x : separators )    {   separatorsOrOperators.put( x , SEPARATOR );   }
