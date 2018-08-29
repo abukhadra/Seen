@@ -5,7 +5,7 @@
 
 ## Status
 ### Phase 1
-Currently,the focus is on developing a bootsrapping compiler that is capable of compiling "Seen" source code to .class files that run on the JVM   
+Currently,the focus is on developing a bootstrapping compiler that is capable of compiling "Seen" source code to .class files that run on the JVM   
 
 Following is an overall task list  
 - [x] Lexer
@@ -16,7 +16,7 @@ Following is an overall task list
 ### Phase 2
 - [ ] Re-write the compiler in the Seen language. 
 
-## Bootsrapping compiler
+## Bootstrapping compiler
 **source**  : **/src/**
 
 **JAR file** : a precompiled JAR file can be found at **/seen.jar**
@@ -25,7 +25,7 @@ Following is an overall task list
  
  **java -jar seen.jar "test\hello world.seen"**
  
- make sure that your console supports the Arabic.
+ make sure that your console supports Arabic.
  
    
 
@@ -44,7 +44,7 @@ A lot of tools do not support the Arabic language , a basic GUI based tool was c
  
 ## The Language
 ### Name 
-**س** ( pronunciation sīn , like "Seen" ) is the twelvth letter of the Arabic alphabet, there are several reasons this name was given to the language, two of which are simplicity , and its usage in  mathematics, the letter س is used by default to indicate unknown values and variables, the equivalent of "x" in English.
+**س** ( pronunciation sīn , like "Seen" ) is the twelfth letter of the Arabic alphabet, there are several reasons this name was given to the language, two of which are simplicity , and its usage in  mathematics, the letter س is used by default to indicate unknown values and variables, the equivalent of "x" in English.
  
 
 ### Design
@@ -53,11 +53,12 @@ The intention is to develop a statically typed, class based object oriented lang
   
   
 ### Syntax
-a sample file showing the syntax of the language is included in the tester tool, you can run the tester tool or look directly at the file [here](https://github.com/abukhadra/Seen/blob/master/seen-tester/src/seen/tester/test1.seen). please not that you need Arabic  support and to set the text direction from Right To Left to be able to view the file properly.
+a sample file showing the syntax of the language is included in the tester tool, you can run the tester tool or look directly at the file [here](https://github.com/abukhadra/Seen/blob/master/seen-tester/src/seen/tester/test1.seen). please note, in order to view the file properly , you will need Arabic  support and to set the text direction from Right To Left ( RTL ).
 
 ### Source Files
--**Encoding** : All files need to be saved in **UTF-8** encoding
--**Extension** : Files must have the extension : **.seen** or the Arabic extension **.س**
+**Encoding** : All files need to be saved in **UTF-8** encoding
+
+**Extension** : Files must have the extension : **.seen** or the Arabic extension **.س**
 
 
 
@@ -67,5 +68,5 @@ The applications are written using **Java 10**
 
 
 ## License
-The Seen bootsrapping compiler source code and the Seen Tester tool are both licensed under an **MIT license**.  
+The Seen bootstrapping compiler and the Seen Tester tool source code are both licensed under an **MIT license**.  
 
