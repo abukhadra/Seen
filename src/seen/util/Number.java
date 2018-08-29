@@ -69,7 +69,11 @@ public class        Number {
         
         String result = "";
         
-        for( int i = 0 ; i < number.length() ; i++ ) {  result += toMashreqDigit( number.substring(  i , i + 1 ) );  }
+        for( int i = 0 ; i < number.length() ; i++ ) {  
+            
+            result += toMashreqDigit( number.substring(  i , i + 1 ) );  
+            
+        }
         
         return result;
         
@@ -84,7 +88,11 @@ public class        Number {
 
         String result = "";
         
-        for( int i = 0 ; i < number.length() ; i++ ) {  result += toMaghrebDigit( number.substring(  i , i + 1 ) );  }
+        for( int i = 0 ; i < number.length() ; i++ ) {  
+            
+            result += toMaghrebDigit( number.substring(  i , i + 1 ) );  
+            
+        }
         
         return result;
         

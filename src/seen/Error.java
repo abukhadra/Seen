@@ -4,7 +4,7 @@ public class    Error {
     
 
 //==============================================================================================
-//                                        notImplementedError()
+// notImplementedError()
 //==============================================================================================    
     public static           void            notImplementedError( String name ) {
     
@@ -15,7 +15,7 @@ public class    Error {
 
     
 //==============================================================================================
-//                                         readFileError()
+// readFileError()
 //==============================================================================================    
     public static           void            readFileError( String file , Exception e ) {
         
