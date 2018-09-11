@@ -1,4 +1,4 @@
-# Seen   س 
+﻿# Seen   س 
 
 # An Arabic based programming language ( لغة برمجة عربية  )                              
  
@@ -15,6 +15,7 @@ Following is an overall task list
 
 ### Phase 2
 - [ ] Re-write the compiler in the Seen language. 
+- [ ] Develop the type system
 
 ## Bootstrapping compiler
 **source**  : **/src/**
@@ -23,7 +24,7 @@ Following is an overall task list
 
 **command line** : go to the repository home directory and run :
  
- **java -jar seen.jar "test\hello world.seen"**
+ **java -jar seen.jar "test\hello_world.seen"**
  
  make sure that your console supports Arabic.
  
